@@ -1,0 +1,52 @@
+plugins {
+    id 'org.springframework.boot' version '3.0.0' // Use the latest compatible Spring Boot version
+    id 'io.spring.dependency-management' version '1.1.0'
+    id 'java'
+}
+
+group = 'com.howudoin'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17' // Make sure this matches your installed Java version
+targetCompatibility = '17'
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring Boot Starter for Web (REST APIs)
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Spring Boot Starter for MongoDB
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+
+    // Spring Boot Starter for Spring Security (for JWT-based authentication)
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // JWT dependency for generating and validating JWT tokens
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+
+    implementation 'javax.xml.bind:jaxb-api:2.3.1'
+
+    implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.1'
+
+
+    // Lombok for reducing boilerplate code (optional, for annotations like @Getter, @Setter)
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // Spring Boot DevTools for hot reloading (optional, for development only)
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // Testing dependencies
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17) // Specify your installed Java version
+    }
+}
